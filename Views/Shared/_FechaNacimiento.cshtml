@@ -1,0 +1,36 @@
+@model CitasMedicasApp.Models.Paciente
+@{
+    var f = Model?.FechaNacimiento;
+    int? d = null, m = null, a = null;
+    if (f.HasValue && f.Value.Year > 1900) { d = f.Value.Day; m = f.Value.Month; a = f.Value.Year; }
+}
+<div class="d-flex gap-2">
+    <select id="fnDia" class="form-select" required>
+        <option value="">Día</option>
+        @for (int i = 1; i <= 31; i++) { <option value="@i" selected="@(d == i)">@i</option> }
+    </select>
+    <select id="fnMes" class="form-select" required>
+        <option value="">Mes</option>
+        @for (int i = 1; i <= 12; i++) { <option value="@i" selected="@(m == i)">@i</option> }
+    </select>
+    <select id="fnAnio" class="form-select" required>
+        <option value="">Año</option>
+        @for (int i = DateTime.Now.Year; i >= 1900; i--) { <option value="@i" selected="@(a == i)">@i</option> }
+    </select>
+</div>
+<input type="hidden" asp-for="FechaNacimiento" />
+<script>
+(function () {
+    const dia = document.getElementById('fnDia'), mes = document.getElementById('fnMes'),
+          anio = document.getElementById('fnAnio'), valor = document.getElementById('FechaNacimiento');
+    function actualizar() {
+        if (dia.value && mes.value && anio.value) {
+            const max = new Date(anio.value, mes.value, 0).getDate();
+            if (+dia.value > max) dia.value = max;
+            valor.value = anio.value + '-' + mes.value.padStart(2, '0') + '-' + dia.value.padStart(2, '0');
+        } else { valor.value = ''; }
+    }
+    [dia, mes, anio].forEach(s => s.addEventListener('change', actualizar));
+    actualizar();
+})();
+</script>
