@@ -7,9 +7,7 @@ namespace CitasMedicasApp.Data;
 
 public partial class CitasMedicasContext : DbContext
 {
-    public CitasMedicasContext()
-    {
-    }
+
 
     public CitasMedicasContext(DbContextOptions<CitasMedicasContext> options)
         : base(options)
