@@ -1,0 +1,104 @@
+@model CitasMedicasApp.Models.AtenderViewModel
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Atender cita";
+    var medicamentos = (List<SelectListItem>)ViewBag.Medicamentos;
+}
+<h1>Atender cita</h1>
+<p>
+    <strong>Paciente:</strong> @Model.Paciente<br />
+    <strong>Médico:</strong> @Model.Medico<br />
+    <strong>Fecha:</strong> @Model.FechaHora.ToString("dd/MM/yyyy HH:mm")
+</p>
+
+<form asp-action="Atender" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="CitaId" />
+
+    <div class="mb-3">
+        <label asp-for="Diagnostico" class="form-label">Diagnóstico</label>
+        <textarea asp-for="Diagnostico" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Diagnostico" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Observaciones" class="form-label">Observaciones</label>
+        <textarea asp-for="Observaciones" class="form-control" rows="3"></textarea>
+    </div>
+
+    <h4>Receta</h4>
+    <table class="table" id="tablaRecetas">
+        <thead><tr><th>Medicamento</th><th>Dosis</th><th>Frecuencia</th><th>Días</th><th></th></tr></thead>
+        <tbody>
+        @for (int i = 0; i < Model.Recetas.Count; i++)
+        {
+            var r = Model.Recetas[i];
+            <tr>
+                <td>
+                    <select class="form-select" data-campo="MedicamentoId" name="Recetas[@i].MedicamentoId">
+                        <option value="">Seleccione...</option>
+                        @foreach (var m in medicamentos)
+                        {
+                            <option value="@m.Value" selected="@(r.MedicamentoId.ToString() == m.Value)">@m.Text</option>
+                        }
+                    </select>
+                </td>
+                <td><input class="form-control" data-campo="Dosis" name="Recetas[@i].Dosis" value="@r.Dosis" placeholder="Ej: 500 mg" /></td>
+                <td><input class="form-control" data-campo="Frecuencia" name="Recetas[@i].Frecuencia" value="@r.Frecuencia" placeholder="Ej: cada 8 horas" /></td>
+                <td><input type="number" min="1" class="form-control" data-campo="DuracionDias" name="Recetas[@i].DuracionDias" value="@r.DuracionDias" /></td>
+                <td><button type="button" class="btn btn-sm btn-outline-danger btnQuitar">Quitar</button></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <button type="button" id="btnAgregar" class="btn btn-secondary mb-3">+ Agregar medicamento</button>
+    <br />
+    <input type="submit" value="Guardar consulta" class="btn btn-primary" />
+    <a asp-controller="Citas" asp-action="Index" class="btn btn-link">Volver</a>
+</form>
+
+<template id="filaPlantilla">
+    <tr>
+        <td>
+            <select class="form-select" data-campo="MedicamentoId">
+                <option value="">Seleccione...</option>
+                @foreach (var m in medicamentos)
+                {
+                    <option value="@m.Value">@m.Text</option>
+                }
+            </select>
+        </td>
+        <td><input class="form-control" data-campo="Dosis" placeholder="Ej: 500 mg" /></td>
+        <td><input class="form-control" data-campo="Frecuencia" placeholder="Ej: cada 8 horas" /></td>
+        <td><input type="number" min="1" class="form-control" data-campo="DuracionDias" /></td>
+        <td><button type="button" class="btn btn-sm btn-outline-danger btnQuitar">Quitar</button></td>
+    </tr>
+</template>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+    (function () {
+        var tbody = document.querySelector('#tablaRecetas tbody');
+        function reindexar() {
+            Array.from(tbody.querySelectorAll('tr')).forEach(function (tr, i) {
+                tr.querySelectorAll('[data-campo]').forEach(function (el) {
+                    el.name = 'Recetas[' + i + '].' + el.getAttribute('data-campo');
+                });
+            });
+        }
+        document.getElementById('btnAgregar').addEventListener('click', function () {
+            var plantilla = document.getElementById('filaPlantilla');
+            tbody.appendChild(plantilla.content.cloneNode(true));
+            reindexar();
+        });
+        tbody.addEventListener('click', function (e) {
+            if (e.target.classList.contains('btnQuitar')) {
+                e.target.closest('tr').remove();
+                reindexar();
+            }
+        });
+        document.querySelector('form').addEventListener('submit', reindexar);
+        reindexar();
+    })();
+    </script>
+}

@@ -1,6 +1,7 @@
 @model IEnumerable<CitasMedicasApp.Models.Cita>
 @{ ViewData["Title"] = "Citas"; }
 <h1>Citas</h1>
+@if (TempData["Error"] != null) { <div class="alert alert-danger">@TempData["Error"]</div> }
 <p><a asp-action="Create">Nueva cita</a></p>
 <table class="table">
     <thead>
@@ -18,6 +19,7 @@
             <td>@item.Estado</td>
             <td>@item.Motivo</td>
             <td>
+                @if (item.Estado == "Programada") { <a asp-controller="Consultas" asp-action="Atender" asp-route-citaId="@item.CitaId">Atender</a> <text>|</text> }
                 <a asp-action="Edit" asp-route-id="@item.CitaId">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.CitaId">Detalles</a> |
                 <a asp-action="Delete" asp-route-id="@item.CitaId">Eliminar</a>

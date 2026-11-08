@@ -1,0 +1,37 @@
+@model CitasMedicasApp.Models.Consulta
+@{
+    ViewData["Title"] = "Consulta";
+    var recetas = (List<CitasMedicasApp.Models.Receta>)ViewBag.Recetas;
+}
+<h1>Consulta</h1>
+<dl class="row">
+    <dt class="col-sm-3">Paciente</dt>
+    <dd class="col-sm-9">@Model.Cita.Paciente.Nombres @Model.Cita.Paciente.Apellidos</dd>
+    <dt class="col-sm-3">Médico</dt>
+    <dd class="col-sm-9">@Model.Cita.Medico.Nombres @Model.Cita.Medico.Apellidos</dd>
+    <dt class="col-sm-3">Fecha de la cita</dt>
+    <dd class="col-sm-9">@Model.Cita.FechaHora.ToString("dd/MM/yyyy HH:mm")</dd>
+    <dt class="col-sm-3">Diagnóstico</dt>
+    <dd class="col-sm-9">@Model.Diagnostico</dd>
+    <dt class="col-sm-3">Observaciones</dt>
+    <dd class="col-sm-9">@Model.Observaciones</dd>
+</dl>
+
+<h4>Receta</h4>
+@if (recetas.Count == 0)
+{
+    <p>Sin medicamentos recetados.</p>
+}
+else
+{
+    <table class="table">
+        <thead><tr><th>Medicamento</th><th>Dosis</th><th>Frecuencia</th><th>Días</th></tr></thead>
+        <tbody>
+        @foreach (var r in recetas)
+        {
+            <tr><td>@r.Medicamento.Nombre</td><td>@r.Dosis</td><td>@r.Frecuencia</td><td>@r.DuracionDias</td></tr>
+        }
+        </tbody>
+    </table>
+}
+<a asp-action="Index">Volver a consultas</a>
