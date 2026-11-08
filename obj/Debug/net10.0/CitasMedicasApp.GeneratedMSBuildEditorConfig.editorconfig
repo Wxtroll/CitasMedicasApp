@@ -30,12 +30,72 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
+[/home/moises/proyectos/CitasMedicasApp/Views/Consultorios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29uc3VsdG9yaW9zL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Consultorios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29uc3VsdG9yaW9zL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Consultorios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29uc3VsdG9yaW9zL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Consultorios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29uc3VsdG9yaW9zL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Consultorios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29uc3VsdG9yaW9zL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Especialidades/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXNwZWNpYWxpZGFkZXMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Especialidades/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXNwZWNpYWxpZGFkZXMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Especialidades/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXNwZWNpYWxpZGFkZXMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Especialidades/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXNwZWNpYWxpZGFkZXMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Especialidades/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXNwZWNpYWxpZGFkZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/moises/proyectos/CitasMedicasApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/moises/proyectos/CitasMedicasApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Medicos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVkaWNvcy9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Medicos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVkaWNvcy9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Medicos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVkaWNvcy9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Medicos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVkaWNvcy9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/moises/proyectos/CitasMedicasApp/Views/Medicos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVkaWNvcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/moises/proyectos/CitasMedicasApp/Views/Pacientes/Create.cshtml]
