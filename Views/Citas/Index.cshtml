@@ -1,0 +1,28 @@
+@model IEnumerable<CitasMedicasApp.Models.Cita>
+@{ ViewData["Title"] = "Citas"; }
+<h1>Citas</h1>
+<p><a asp-action="Create">Nueva cita</a></p>
+<table class="table">
+    <thead>
+        <tr><th>Paciente</th><th>Médico</th><th>Consultorio</th><th>Fecha y hora</th><th>Duración (min)</th><th>Estado</th><th>Motivo</th><th></th></tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Paciente.Nombres @item.Paciente.Apellidos</td>
+            <td>@item.Medico.Nombres @item.Medico.Apellidos</td>
+            <td>@item.Consultorio.Numero</td>
+            <td>@item.FechaHora.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>@item.DuracionMin</td>
+            <td>@item.Estado</td>
+            <td>@item.Motivo</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CitaId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.CitaId">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.CitaId">Eliminar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

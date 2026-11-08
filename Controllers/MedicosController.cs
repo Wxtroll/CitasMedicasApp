@@ -59,6 +59,7 @@ namespace CitasMedicasApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MedicoId,EspecialidadId,Nombres,Apellidos,NumeroJvpm,Telefono,Correo,Activo")] Medico medico)
         {
+            ModelState.Remove("Especialidad");
             if (ModelState.IsValid)
             {
                 _context.Add(medico);
@@ -98,6 +99,7 @@ namespace CitasMedicasApp.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("Especialidad");
             if (ModelState.IsValid)
             {
                 try

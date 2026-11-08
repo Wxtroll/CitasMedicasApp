@@ -1,0 +1,51 @@
+@model CitasMedicasApp.Models.Cita
+@{
+    var f = Model?.FechaHora;
+    int? d = null, m = null, a = null, h = null, mi = null;
+    if (f.HasValue && f.Value.Year > 1900) { d = f.Value.Day; m = f.Value.Month; a = f.Value.Year; h = f.Value.Hour; mi = f.Value.Minute; }
+    int desde = Math.Min(DateTime.Now.Year, a ?? DateTime.Now.Year);
+}
+<div class="d-flex flex-wrap gap-3">
+    <div class="d-flex gap-2">
+        <select id="cDia" class="form-select" required>
+            <option value="">Día</option>
+            @for (int i = 1; i <= 31; i++) { <option value="@i" selected="@(d == i)">@i</option> }
+        </select>
+        <select id="cMes" class="form-select" required>
+            <option value="">Mes</option>
+            @for (int i = 1; i <= 12; i++) { <option value="@i" selected="@(m == i)">@i</option> }
+        </select>
+        <select id="cAnio" class="form-select" required>
+            <option value="">Año</option>
+            @for (int i = desde; i <= DateTime.Now.Year + 2; i++) { <option value="@i" selected="@(a == i)">@i</option> }
+        </select>
+    </div>
+    <div class="d-flex gap-2">
+        <select id="cHora" class="form-select" required>
+            <option value="">Hora</option>
+            @for (int i = 0; i <= 23; i++) { <option value="@i" selected="@(h == i)">@i.ToString("00")</option> }
+        </select>
+        <select id="cMin" class="form-select" required>
+            <option value="">Min</option>
+            @for (int i = 0; i <= 55; i += 5) { <option value="@i" selected="@(mi == i)">@i.ToString("00")</option> }
+        </select>
+    </div>
+</div>
+<input type="hidden" asp-for="FechaHora" />
+<script>
+(function () {
+    var dia = document.getElementById('cDia'), mes = document.getElementById('cMes'),
+        anio = document.getElementById('cAnio'), hora = document.getElementById('cHora'),
+        min = document.getElementById('cMin'), valor = document.getElementById('FechaHora');
+    function dos(x) { return String(x).padStart(2, '0'); }
+    function actualizar() {
+        if (dia.value && mes.value && anio.value && hora.value !== '' && min.value !== '') {
+            var max = new Date(anio.value, mes.value, 0).getDate();
+            if (+dia.value > max) dia.value = max;
+            valor.value = anio.value + '-' + dos(mes.value) + '-' + dos(dia.value) + 'T' + dos(hora.value) + ':' + dos(min.value);
+        } else { valor.value = ''; }
+    }
+    [dia, mes, anio, hora, min].forEach(function (s) { s.addEventListener('change', actualizar); });
+    actualizar();
+})();
+</script>

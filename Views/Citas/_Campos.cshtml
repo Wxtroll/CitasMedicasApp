@@ -1,0 +1,38 @@
+@model CitasMedicasApp.Models.Cita
+<div class="mb-3">
+    <label asp-for="PacienteId" class="form-label">Paciente</label>
+    <select asp-for="PacienteId" class="form-select" asp-items="(SelectList)ViewBag.Pacientes"><option value="">Seleccione...</option></select>
+    <span asp-validation-for="PacienteId" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="MedicoId" class="form-label">Médico</label>
+    <select asp-for="MedicoId" class="form-select" asp-items="(SelectList)ViewBag.Medicos"><option value="">Seleccione...</option></select>
+    <span asp-validation-for="MedicoId" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="ConsultorioId" class="form-label">Consultorio</label>
+    <select asp-for="ConsultorioId" class="form-select" asp-items="(SelectList)ViewBag.Consultorios"><option value="">Seleccione...</option></select>
+    <span asp-validation-for="ConsultorioId" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label class="form-label">Fecha y hora</label>
+    <partial name="_FechaHora" model="Model" />
+    <span asp-validation-for="FechaHora" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="DuracionMin" class="form-label">Duración (minutos)</label>
+    <input asp-for="DuracionMin" class="form-control" type="number" min="5" step="5" />
+    <span asp-validation-for="DuracionMin" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Estado" class="form-label"></label>
+    <select asp-for="Estado" class="form-select">
+        <option>Programada</option><option>Atendida</option><option>Cancelada</option>
+    </select>
+    <span asp-validation-for="Estado" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Motivo" class="form-label"></label>
+    <input asp-for="Motivo" class="form-control" />
+    <span asp-validation-for="Motivo" class="text-danger"></span>
+</div>

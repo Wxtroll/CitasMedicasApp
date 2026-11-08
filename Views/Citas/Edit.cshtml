@@ -1,0 +1,13 @@
+@model CitasMedicasApp.Models.Cita
+@{ ViewData["Title"] = "Editar cita"; }
+<h1>Editar cita</h1>
+<div class="row"><div class="col-md-6">
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="CitaId" />
+    <partial name="_Campos" model="Model" />
+    <input type="submit" value="Guardar" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-link">Volver</a>
+</form>
+</div></div>
+@section Scripts { @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }
