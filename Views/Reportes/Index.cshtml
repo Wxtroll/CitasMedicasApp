@@ -1,0 +1,53 @@
+@model CitasMedicasApp.Controllers.ReportesViewModel
+@{ ViewData["Title"] = "Reportes"; }
+<h1>Reportes</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>Citas por especialidad</h4>
+        <table class="table">
+            <thead><tr><th>Especialidad</th><th>Citas</th></tr></thead>
+            <tbody>
+            @foreach (var x in Model.PorEspecialidad) { <tr><td>@x.Nombre</td><td>@x.Total</td></tr> }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h4>Top 5 medicamentos más recetados</h4>
+        <table class="table">
+            <thead><tr><th>Medicamento</th><th>Recetas</th></tr></thead>
+            <tbody>
+            @foreach (var x in Model.TopMedicamentos) { <tr><td>@x.Nombre</td><td>@x.Total</td></tr> }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h4 class="mt-4">Historial de un paciente</h4>
+<form method="get" class="d-flex gap-2 mb-3" style="max-width:500px">
+    <select name="pacienteId" class="form-select" asp-items="Model.Pacientes"><option value="">Seleccione un paciente...</option></select>
+    <button class="btn btn-primary" type="submit">Ver</button>
+</form>
+
+@if (Model.Historial != null)
+{
+    if (Model.Historial.Count == 0) { <p>Este paciente no tiene citas.</p> }
+    else
+    {
+        <table class="table">
+            <thead><tr><th>Fecha y hora</th><th>Médico</th><th>Especialidad</th><th>Estado</th><th>Diagnóstico</th></tr></thead>
+            <tbody>
+            @foreach (var h in Model.Historial)
+            {
+                <tr>
+                    <td>@h.FechaHora.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@h.Medico</td>
+                    <td>@h.Especialidad</td>
+                    <td>@h.Estado</td>
+                    <td>@h.Diagnostico</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+}
