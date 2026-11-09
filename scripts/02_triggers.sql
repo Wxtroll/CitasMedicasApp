@@ -1,6 +1,7 @@
 USE CitasMedicas;
 GO
 
+IF OBJECT_ID('dbo.AuditoriaCitas', 'U') IS NULL
 CREATE TABLE AuditoriaCitas (
     AuditoriaId INT IDENTITY(1,1) PRIMARY KEY,
     CitaId INT NOT NULL,
